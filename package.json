@@ -8,6 +8,7 @@
     "build": "next build && next export && echo> out/.nojekyll",
     "start": "next start",
     "lint": "next lint",
+    "commit": "echo> out/.nojekyll && git add out/ && git commit -m \"deploying to pages\" && git subtree push --prefix out origin pages",
     "deploy": "next build && next export && echo> out/.nojekyll && git add out/ && git commit -m \"deploying to pages\" && git subtree push --prefix out origin pages"
   },
   "dependencies": {
