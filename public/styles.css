@@ -1,0 +1,60 @@
+/* actual text in the selection dropdown options */
+.ant-select-item-option-content {
+  white-space: break-spaces !important;
+  overflow-wrap: break-word !important;
+  font-family: Avenir-Light;
+}
+
+.ant-select-selection-item-content {
+  white-space: break-spaces !important;
+  overflow-wrap: break-word !important;
+  text-align: left;
+}
+
+/* selector (stuff around area of study, institution, location, dates, and eligibility) */
+.ant-select-selector {
+  z-index: 100; /* so that the icon doesn't cover part of the clicking area */
+  flex-direction: row;
+  height: auto !important;
+  width: 105%;
+  padding: 1% !important;
+
+  background: transparent !important;
+  text-align: center;
+
+  border-radius: 15px !important;
+}
+
+/* selection dropdown options after selecting them */
+.ant-select-selection-item {
+  box-sizing: content-box !important;
+  border-radius: 20px !important;
+  height: 100% !important;
+  width: 105px; /* todo: make this depend on length of longest word */
+}
+
+.ant-select-open {
+  border-radius: 15px !important;
+}
+
+/* the "area of study", "institution", etc text */
+.ant-select-selection-placeholder {
+  color: black;
+}
+
+.anticon-close {
+  position: absolute;
+  right:0;
+  top:calc(30%);
+}
+
+/* selector arrow */
+.ant-select-arrow {
+  font-size:100%;
+  color: black;
+}
+
+/* pagination */
+.ant-pagination-item, .ant-pagination-item-link {
+  border-radius: 10px !important;
+}
