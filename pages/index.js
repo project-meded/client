@@ -98,6 +98,7 @@ const Index = () => {
                     md={{ span: 4 }}
                     sm={{ span: 12 }}
                     xs={{ span: 12 }}
+                    key={category.id}
                   >
                     <Button
                       style={{

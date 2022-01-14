@@ -169,8 +169,16 @@ const Launch = () => {
                   borderRadius: "15px",
                   width: "130px",
                   height: "45px",
-                  backgroundColor: "#FF9E6D",
+                  backgroundColor: opportunities[opportunityIndex].website
+                                    ? "#FF9E6D"
+                                    : "#AEAEAE",
                 }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(opportunities[opportunityIndex].website, "_blank");
+                  }
+                }
+                disabled={!opportunities[opportunityIndex].website}
               >
                 <Text style={{ color: "white", fontFamily: "Avenir-Light" }}>Apply!</Text>
               </Button>
@@ -323,19 +331,49 @@ const Launch = () => {
   const fetchData = async () => {
     if (!router.isReady) return;
 
-    if (categoryId) setSelectedCategories(categoryId.split(","));
-    if (q) setText(q);
-    if (a) setArea(a.split(","));
-    if (i) setInstitution(i.split(","));
-    if (l) setLocation(l.split(","));
-    if (d) setSelectedDates(d.split(","));
-    if (e) setSelectedEligibility(e.split(","));
-    if (f) setFunding(f);
-    if (p) setPage(p);
+    //update state and params
+    const params = {};
+    if (categoryId) {
+      setSelectedCategories(categoryId.split(","));
+      params.c = categoryId;
+    }
+    if (q) {
+      setText(q);
+      params.q = q;
+    }
+    if (a) {
+      setArea(a.split(","));
+      params.a = a;
+    }
+    if (i) {
+      setInstitution(i.split(","));
+      params.i = i;
+    }
+    if (l) {
+      setLocation(l.split(","));
+      params.l = l;
+    }
+    if (d) {
+      setSelectedDates(d.split(","));
+      params.d = d;
+    }
+    if (e) {
+      setSelectedEligibility(e.split(","));
+      params.e = e;
+    }
+    if (f) {
+      setFunding(f);
+      params.f = f;
+    }
+    if (p) {
+      setPage(p);
+      params.p = p;
+    }
 
     setLoading(true);
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_SERVER}/api/opportunities?c=${categoryId}&q=${q}&a=${a}&i=${i}&l=${l}&d=${d}&e=${e}&f=${f}&p=${p}`
+    const { data } = await axios.get( 
+      process.env.NEXT_PUBLIC_SERVER + "/api/opportunities",
+      {params: params}
     );
     setLoading(false);
 
@@ -378,6 +416,7 @@ const Launch = () => {
                 md={{ span: 4 }}
                 sm={{ span: 12 }}
                 xs={{ span: 12 }}
+                key={category.id}
               >
                 <Button
                   disabled = { category.id == 'volunteering' && funding }
@@ -482,7 +521,7 @@ const Launch = () => {
                 }
               >
                 {areas.map((area) => (
-                  <Option value={area.id}>{area.name}</Option>
+                  <Option key={area.id} value={area.id}>{area.name}</Option>
                 ))}
               </Select>
             </Col>
@@ -505,7 +544,7 @@ const Launch = () => {
                 }
               >
                 {institutions.map((institution) => (
-                  <Option value={institution.id}>{institution.name}</Option>
+                  <Option key={institution.id} value={institution.id}>{institution.name}</Option>
                 ))}
               </Select>
             </Col>
@@ -528,7 +567,7 @@ const Launch = () => {
                 }
               >
                 {locations.map((location) => (
-                  <Option value={location.id}>{location.name}</Option>
+                  <Option key={location.id} value={location.id}>{location.name}</Option>
                 ))}
               </Select>
             </Col>
@@ -614,7 +653,7 @@ const Launch = () => {
               <Row gutter={[0, 16]} justify="end">
                 {renderResultCount()}
                 {opportunities.map((opportunity, index) => (
-                  <Col span={24}>
+                  <Col span={24} key={opportunity.id}>
                     <Card
                       style={{
                         borderRadius: "15px",
