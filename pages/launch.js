@@ -265,7 +265,7 @@ const Launch = () => {
               <div>
                 <Text style={{ fontFamily: "Avenir-Black" }} strong>Description</Text>
               </div>
-              <Text style={{ fontFamily: "Avenir-Light" }}>
+              <Text style={{ fontFamily: "Avenir-Light", whiteSpace: "pre-wrap" }}>
                 {opportunities[opportunityIndex]
                   ? opportunities[opportunityIndex].description
                   : ""}
@@ -275,7 +275,7 @@ const Launch = () => {
               <div>
                 <Text style={{ fontFamily: "Avenir-Black" }} strong>Application Requirements</Text>
               </div>
-              <Text style={{ fontFamily: "Avenir-Light" }}>
+              <Text style={{ fontFamily: "Avenir-Light", whiteSpace: "pre-wrap" }}>
                 {opportunities[opportunityIndex]
                   ? opportunities[opportunityIndex].requirements
                   : ""}
@@ -300,7 +300,7 @@ const Launch = () => {
     if (!loading) {
       return (
         <Col>
-          <Text style={{ fontFamily:"Avenir-Light", fontSize: "15px" }}>{length} results</Text>
+          <Text style={{ fontFamily:"Avenir-Light", fontSize: "15px" }}>{length} {length==1 ? "result" : "results"}</Text>
         </Col>
       );
     } else {
