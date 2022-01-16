@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <link type="text/css" rel="stylesheet" href="/styles.css" as="style"></link>
 
-        <title>Project Med</title>
+        <title>Project MED</title>
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
 
       </Head>
