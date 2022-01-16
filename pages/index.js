@@ -17,6 +17,7 @@ const Banner = ({ className }) => (
 const StyledBanner = styled(Banner)`
   color: white;
   font-size: 2rem;
+  font-family: Avenir-Heavy;
 
   @media (min-width: 768px) {
     font-size: 2.4rem;
