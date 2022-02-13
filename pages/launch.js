@@ -59,7 +59,7 @@ const Launch = () => {
   const [selectedDates, setSelectedDates] = useState([]);
   const [selectedEligibility, setSelectedEligibility] = useState([]);
 
-  const [funding, setFunding] = useState(false);
+  const [stipend, setStipend] = useState(false);
 
   const [page, setPage] = useState(1);
 
@@ -99,7 +99,7 @@ const Launch = () => {
                 params.push(`d=${selectedDates.join(",")}`);
               if (selectedEligibility.length > 0)
                 params.push(`e=${selectedEligibility.join(",")}`);
-              if (funding) params.push(`f=${funding}`);
+              if (stipend) params.push(`f=${stipend}`);
 
               location.href = `/launch?p=${newPage}${
                 params.length > 0 ? "&" + params.join("&") : ""
@@ -253,7 +253,7 @@ const Launch = () => {
             </Col>
             <Col span={24}>
               <div>
-                <Text style={{ fontFamily: "Avenir-Black" }} strong>Funding</Text>
+                <Text style={{ fontFamily: "Avenir-Black" }} strong>Stipend</Text>
               </div>
               <Text style={{ fontFamily: "Avenir-Light" }}>
                 {opportunities[opportunityIndex]
@@ -362,7 +362,7 @@ const Launch = () => {
       params.e = e;
     }
     if (f) {
-      setFunding(f);
+      setStipend(f);
       params.f = f;
     }
     if (p) {
@@ -419,7 +419,7 @@ const Launch = () => {
                 key={category.id}
               >
                 <Button
-                  disabled = { category.id == 'volunteering' && funding }
+                  disabled = { category.id == 'volunteering' && stipend }
                   style={{
                     fontFamily: "Avenir-Light",
                     borderRadius: "100px",
@@ -482,7 +482,7 @@ const Launch = () => {
                     params.push(`d=${selectedDates.join(",")}`);
                   if (selectedEligibility.length > 0)
                     params.push(`e=${selectedEligibility.join(",")}`);
-                  if (funding) params.push(`f=${funding}`);
+                  if (stipend) params.push(`f=${stipend}`);
 
                   location.href = `/launch${
                     params.length > 0 ? "?" + params.join("&") : ""
@@ -632,11 +632,11 @@ const Launch = () => {
               <Button style={{ width: "100%", borderRadius: "100px" }}>
                 <Checkbox
                   style={{ fontFamily: "Avenir-Light" }}
-                  checked={funding}
+                  checked={stipend}
                   disabled={ selectedCategories.includes('volunteering') }
-                  onChange={(e) => setFunding(e.target.checked)}
+                  onChange={(e) => setStipend(e.target.checked)}
                 >
-                  Funding
+                  Stipend
                 </Checkbox>
               </Button>
             </Col>

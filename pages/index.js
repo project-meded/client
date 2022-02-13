@@ -47,7 +47,7 @@ const Index = () => {
             height: 600,
             objectFit: "cover",
             objectPosition: "50% 50%",
-            opacity: 0.8,
+            opacity: 0.7,
           }}
         />
         <div style={{ fontFamily: "Avenir-Light" }}>"Human embryonic stem cells only A", derivative work by Nissim Benvenisty, licensed under CC BY 2.5</div>
