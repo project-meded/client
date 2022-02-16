@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import createPersistedState from 'use-persisted-state'; //local-storage
 import {
   Row,
   Col,
   Button,
   Typography,
   Input,
-  Divider,
   Card,
   Select,
   Checkbox,
-  Pagination,
+  Pagination
 } from "antd";
 import { categories } from "../components/constants";
+import useStarred from "../components/starred";
 import { useRouter } from "next/router";
 import { SearchOutlined, StarOutlined, StarFilled, CaretDownFilled } from "@ant-design/icons";
 import Icon from "@ant-design/icons";
@@ -32,13 +31,13 @@ const ArrowRightSvg = () => (
 
 const ArrowRightIcon = props => <Icon component={ArrowRightSvg} {...props} />;
 
-const useStarredState = createPersistedState('starred');
-
 const Launch = () => {
   const router = useRouter();
 
+  const { starred, updateStarred } = useStarred();
+
   const {
-    query: { category: categoryId, q, a, i, l, d, e, f, p },
+    query: { category: categoryId, q, a, i, l, d, e, f, o, p },
   } = router;
 
   const [opportunities, setOpportunities] = useState([]);
@@ -64,14 +63,6 @@ const Launch = () => {
   const [page, setPage] = useState(1);
 
   const [loading, setLoading] = useState(false);
-
-  const [starred, setStarred] = useStarredState([]);
-
-  const updateStarred = (opportunityId) => {
-    starred.includes(opportunityId)
-    ? setStarred(starred.filter(oid => oid != opportunityId))
-    : setStarred(prev => [...prev, opportunityId]);
-  };
 
   // renderPagination goes from line 76 to 288
   const renderPagination = () => {
@@ -365,6 +356,9 @@ const Launch = () => {
       setStipend(f);
       params.f = f;
     }
+    if (o) {
+      params.o = o
+    }
     if (p) {
       setPage(p);
       params.p = p;
@@ -496,7 +490,7 @@ const Launch = () => {
         <Col span={2} />
       </Row>
 
-      <hr style={{ border:"none", height: "50px", boxShadow: "0 10px 10px -10px #cccccc", margin: "-30px auto 20px" }}/>
+      <hr style={{ border:"none", height:"50px", boxShadow:"0 10px 10px -10px #cccccc", margin:"-30px auto 20px" }}/>
 
       <Row>
         <Col span={3} />
