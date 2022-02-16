@@ -57,9 +57,9 @@ async function updateStarredData(starred) {
 }
 
 const handleCrossIconClick = (opportunityId, starred, updateStarred) => {
-  updateStarred(opportunityId);
   var index = starred.indexOf(opportunityId);
   if (index !== -1) {
+    updateStarred(opportunityId);
     starred.splice(index, 1);
     starredData.splice(index, 1);
   }
