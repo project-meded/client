@@ -41,7 +41,7 @@ const Index = () => {
     <div>
       <div style={{ position: "relative" }}>
         <img
-          src="/main-1.jpg"
+          src="/main.png"
           style={{
             width: "100%",
             height: 600,
