@@ -8,6 +8,7 @@ import * as gtag from '../lib/gtag';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react'
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
 
@@ -46,6 +47,13 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
+
+      <Head>
+        <link type="text/css" rel="stylesheet" href="/styles.css" as="style"></link>
+
+        <title>Project MED</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+      </Head>
 
       <Header />
       <Component {...pageProps} />
